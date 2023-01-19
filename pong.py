@@ -27,6 +27,7 @@ class Ball(pygame.sprite.Sprite):
 			self.xfactor=-self.xfactor
 
 	def update(self,collision_state):
+#		self.speed += 0.004
 		self.collision_num = collision_state
 		self.change_dir()
 		self.rect.x += self.xfactor*self.speed
