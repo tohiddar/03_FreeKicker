@@ -12,7 +12,7 @@ class Ball(pygame.sprite.Sprite):
 		ball_image = pygame.transform.scale(ball_image, DEFAULT_IMAGE_SIZE)
 		self.image = ball_image
 		self.rect = self.image.get_rect(midtop = (400,200))
-		self.speed=3
+		self.speed=0
 #		self.xfactor = random.uniform(-1,1)
 		self.xfactor = -0.6
 		self.ysign = math.copysign(1, random.uniform(-1,1))
@@ -141,7 +141,7 @@ player_stand = pygame.image.load('graphics/player/player_stand.png').convert_alp
 player_stand = pygame.transform.rotozoom(player_stand,0,2)
 player_stand_rect = player_stand.get_rect(center = (400,200))
 
-game_name = test_font.render('Pong!',False,(111,196,169))
+game_name = test_font.render('Free Kicker!',False,(111,196,169))
 game_name_rect = game_name.get_rect(center = (400,80))
 
 game_message = test_font.render('Press space to run',False,(111,196,169))
