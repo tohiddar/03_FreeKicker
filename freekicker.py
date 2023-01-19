@@ -13,7 +13,6 @@ class Ball(pygame.sprite.Sprite):
 		self.image = ball_image
 		self.rect = self.image.get_rect(midtop = (400,200))
 		self.speed=0
-#		self.xfactor = random.uniform(-1,1)
 		self.xfactor = -0.6
 		self.ysign = math.copysign(1, random.uniform(-1,1))
 		self.yfactor = math.sqrt(1-math.pow(self.xfactor,2))*self.ysign
@@ -25,6 +24,8 @@ class Ball(pygame.sprite.Sprite):
 		if self.collision_num == 1:
 			print(self.xfactor)
 			self.xfactor=-self.xfactor
+	def move_ball(self):
+		i=1
 
 	def update(self,collision_state):
 #		self.speed += 0.004
@@ -32,6 +33,23 @@ class Ball(pygame.sprite.Sprite):
 		self.change_dir()
 		self.rect.x += self.xfactor*self.speed
 		self.rect.y += self.yfactor*self.speed
+
+
+class Obstacles(pygame.sprite.Sprite):
+	def __init__(self,type):
+		super().__init__()
+		racket_image=pygame.image.load('graphics/bullet.png').convert_alpha()
+		self.type=type
+		if type == 'goal':
+			DEFAULT_IMAGE_SIZE = (4, 65)
+			racket_image = pygame.transform.scale(racket_image, DEFAULT_IMAGE_SIZE)
+			self.image = racket_image
+			self.rect = self.image.get_rect(midbottom = (700,180))
+		elif type == 'wall':
+			DEFAULT_IMAGE_SIZE = (6, 45)
+			racket_image = pygame.transform.scale(racket_image, DEFAULT_IMAGE_SIZE)
+			self.image = racket_image
+			self.rect = self.image.get_rect(midbottom = (400,180))
 
 class Racket(pygame.sprite.Sprite):
 	def __init__(self,type):
